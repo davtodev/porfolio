@@ -9,14 +9,14 @@ import { Redis } from "@upstash/redis";
 export const revalidate = 60;
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 const redis = Redis.fromEnv();
 
-export async function generateStaticParams(): Promise<Props["params"][]> {
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   return allProjects
     .filter((p) => p.published)
     .map((p) => ({
@@ -25,15 +25,20 @@ export async function generateStaticParams(): Promise<Props["params"][]> {
 }
 
 export default async function PostPage({ params }: Props) {
-  const slug = params?.slug;
+  const { slug } = await params;
   const project = allProjects.find((project) => project.slug === slug);
 
   if (!project) {
     notFound();
   }
 
-  const views =
-    (await redis.get<number>(["pageviews", "projects", slug].join(":"))) ?? 0;
+  let views = 0;
+  try {
+    views = (await redis.get<number>(["pageviews", "projects", slug].join(":"))) ?? 0;
+  } catch (error) {
+    console.warn('Redis not configured, using default view count');
+    views = 0;
+  }
 
   return (
     <div className="bg-zinc-50 min-h-screen">

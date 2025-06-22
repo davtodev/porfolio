@@ -11,14 +11,24 @@ const redis = Redis.fromEnv();
 
 export const revalidate = 60;
 export default async function ProjectsPage() {
-  const views = (
-    await redis.mget<number[]>(
+  let views: Record<string, number> = {};
+  
+  try {
+    const viewsData = await redis.mget<number[]>(
       ...allProjects.map((p) => ["pageviews", "projects", p.slug].join(":")),
-    )
-  ).reduce((acc, v, i) => {
-    acc[allProjects[i].slug] = v ?? 0;
-    return acc;
-  }, {} as Record<string, number>);
+    );
+    views = viewsData.reduce((acc, v, i) => {
+      acc[allProjects[i].slug] = v ?? 0;
+      return acc;
+    }, {} as Record<string, number>);
+  } catch (error) {
+    // If Redis is not configured, use default values
+    console.warn('Redis not configured, using default view counts');
+    views = allProjects.reduce((acc, project) => {
+      acc[project.slug] = 0;
+      return acc;
+    }, {} as Record<string, number>);
+  }
 
   const featured = allProjects.find((project) => project.slug === "unkey")!;
   const top2 = allProjects.find((project) => project.slug === "planetfall")!;

@@ -1,33 +1,90 @@
 <div align="center">
-    <a href="https://chronark.com"><h1 align="center">chronark.com</h1></a>
-
-My personal website, built with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), [Upstash](https://upstash.com?ref=chronark.com), [Contentlayer](https://www.contentlayer.dev/) and deployed to [Vercel](https://vercel.com/).
-
+    <h1 align="center">Portfolio Personal - David Torres</h1>
+    <p>Mi sitio web personal desarrollado con tecnologías modernas</p>
 </div>
 
 <br/>
 
+## 🚀 Tecnologías utilizadas
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/upstash/clone?demo-title=Next.js%20Portfolio%20with%20Pageview%20Counter&demo-description=Portfolio%20site%20with%20pageview%20counter%2C%20built%20with%20Next.js%2013%20App%20Router%2C%20Contentlayer%2C%20and%20Upstash%20Redis.&demo-url=https%3A%2F%2Fchronark.com%2F&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F1DA8n5a6WaP9p1FXf9LmUY%2Fc6264fa2732355787bf657df92dda8a1%2FCleanShot_2023-04-17_at_14.17.37.png&project-name=Next.js%20Portfolio%20with%20Pageview%20Counter&repository-name=nextjs-portfolio-pageview-counter&repository-url=https%3A%2F%2Fgithub.com%2Fchronark%2Fchronark.com&from=templates&integration-ids=oac_V3R1GIpkoJorr6fqyiwdhl17)
+- **Frontend**: Next.js 13+ con App Router
+- **Estilos**: Tailwind CSS
+- **Contenido**: Contentlayer para manejo de contenido
+- **Base de datos**: Upstash Redis
+- **Deployment**: Vercel
+- **Lenguaje**: TypeScript
 
-## Running Locally
+## ✨ Características
 
+- 📊 Contador de visualizaciones de página
+- 🎨 Diseño responsive y moderno
+- 🚀 Optimización para rendimiento
+- 📁 Sistema de blog integrado
+- 🔄 Actualizaciones en tiempo real
+- 🌍 SEO optimizado
 
-```sh-session
-git clone https://github.com/chronark/chronark.com.git
-cd chronark.com
+## 🛠️ Instalación local
+
+1. Clona el repositorio:
+```bash
+git clone https://github.com/davto-xyz/porfolio.git
+cd porfolio
 ```
 
-
-Create a `.env` file similar to [`.env.example`](https://github.com/chronark/chronark.com/blob/main/.env.example).
-
-Then install dependencies and run the development server:
-```sh-session
+2. Instala las dependencias:
+```bash
 pnpm install
-pnpm dev
+# o
+npm install
 ```
 
+3. Configura las variables de entorno:
+```bash
+cp .env.example .env.local
+```
 
-## Cloning / Forking
+4. Ejecuta el servidor de desarrollo:
+```bash
+pnpm dev
+# o
+npm run dev
+```
 
-Please remove all of my personal information (projects, images, etc.) before deploying your own version of this site.
+5. Abre [http://localhost:3000](http://localhost:3000) en tu navegador
+
+## 💫 Deploy
+
+Este proyecto está optimizado para deployment en Vercel:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/davto-xyz/porfolio)
+
+## 📁 Estructura del proyecto
+
+```
+porfolio/
+├── app/                 # App Router de Next.js 13+
+├── components/          # Componentes reutilizables
+├── content/             # Contenido del blog y proyectos
+├── lib/                 # Utilidades y configuraciones
+├── public/              # Assets estáticos
+└── styles/              # Estilos globales
+```
+
+## 📝 Contenido
+
+El contenido se manage a través de archivos Markdown con frontmatter, procesados por Contentlayer para una experiencia de desarrollo óptima.
+
+## 🔗 Enlaces
+
+- **Portfolio**: [Ver portfolio en vivo](https://portfolio-davto.vercel.app)
+- **GitHub**: [Código fuente](https://github.com/davto-xyz/porfolio)
+
+## 📞 Contacto
+
+Si tienes alguna pregunta o sugerencia, no dudes en contactarme a través de mi portfolio.
+
+---
+
+<div align="center">
+    <p>Hecho con ❤️ por David Torres</p>
+</div>
